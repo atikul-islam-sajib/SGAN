@@ -7,6 +7,7 @@ sys.path.append("src")
 
 from utils import config, dump, load
 from dataloader import Loader
+from discriminator import Discriminator
 
 
 class UnitTest(unittest.TestCase):
@@ -23,6 +24,8 @@ class UnitTest(unittest.TestCase):
         self.val_dataloader = load(
             os.path.join(self.config["path"]["processed_path"], "val_dataloader.pkl")
         )
+
+        self.netD = Discriminator(in_channels=1, out_channels=512)
 
     def tearDown(self) -> None:
         return super().tearDown()
@@ -66,6 +69,16 @@ class UnitTest(unittest.TestCase):
         data, labels = next(iter(self.val_dataloader))
 
         self.assertEqual(data.size(), torch.Size([4, 3, 64, 64]))
+
+    def test_classification_shape(self):
+        classification, _ = self.netD(torch.randn(4, 1, 64, 64))
+
+        self.assertEqual(classification.size(), torch.Size([4, 2]))
+
+    def test_validity_shape(self):
+        _, validity = self.netD(torch.randn(4, 1, 64, 64))
+
+        self.assertEqual(validity.size(), torch.Size([4, 1]))
 
 
 if __name__ == "__main__":
