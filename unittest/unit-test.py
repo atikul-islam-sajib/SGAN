@@ -8,6 +8,7 @@ sys.path.append("src")
 from utils import config, dump, load
 from dataloader import Loader
 from discriminator import Discriminator
+from generator import Generator
 
 
 class UnitTest(unittest.TestCase):
@@ -26,6 +27,7 @@ class UnitTest(unittest.TestCase):
         )
 
         self.netD = Discriminator(in_channels=1, out_channels=512)
+        self.netG = Generator(latent_space=100, out_channels=1)
 
     def tearDown(self) -> None:
         return super().tearDown()
@@ -79,6 +81,11 @@ class UnitTest(unittest.TestCase):
         _, validity = self.netD(torch.randn(4, 1, 64, 64))
 
         self.assertEqual(validity.size(), torch.Size([4, 1]))
+
+    def test_netG_output(self):
+        output = self.netG(torch.randn(4, 100, 1, 1))
+
+        self.assertEqual(output.size(), torch.Size([4, 1, 64, 64]))
 
 
 if __name__ == "__main__":
