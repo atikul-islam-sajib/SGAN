@@ -1,0 +1,2 @@
+,total_data(Train),total_data(Test),total_data(Val),total_batch(Train),total_batch(Test),total_data,train_shape,test_shape,val_shape
+quantity,61,61,123,16,4,245,"torch.Size([4, 3, 64, 64])","torch.Size([16, 3, 64, 64])","torch.Size([4, 3, 64, 64])"

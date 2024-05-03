@@ -1,3 +1,4 @@
 path:
-  raw_path: ../../raw/
-  processed_path: ../../processed/
+  raw_path: ../../data/raw/
+  processed_path: ../../data/processed/
+  files_path: ../../research/files/
