@@ -282,8 +282,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--split_size",
         type=float,
-        default=0.2,
-        choices=[0.2, 0.25, 0.30],
+        default=0.50,
+        choices=[0.40, 0.50, 0.60],
         help="Split of the dataset".capitalize(),
     )
     args = parser.parse_args()
@@ -297,10 +297,10 @@ if __name__ == "__main__":
         )
 
         loader.unzip_folder()
-        # loader.create_dataloader()
+        loader.create_dataloader()
 
-        # loader.dataset_details()
-        # loader.plot_images()
+        loader.dataset_details()
+        loader.plot_images()
 
     else:
         raise ValueError("Image path is not found".capitalize())
