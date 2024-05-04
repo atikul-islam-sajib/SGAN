@@ -1,11 +1,12 @@
-path:
-  raw_path: ./data/raw/
-  processed_path: ./data/processed/
-  files_path: ./research/files/
+# path:
+#   raw_path: ./data/raw/
+#   processed_path: ./data/processed/
+#   files_path: ./research/files/
   
 
 
-# path:
-#   raw_path: ../../data/raw/
-#   processed_path: ../../data/processed/
-#   files_path: ../../research/files/
+path:
+  raw_path: ../../data/raw/
+  processed_path: ../../data/processed/
+  files_path: ../../research/files/
+  train_models: ../../checkpoints/train_models/

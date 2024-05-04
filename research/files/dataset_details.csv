@@ -5,6 +5,6 @@ total_data(Val),123
 total_batch(Train),16
 total_batch(Test),4
 total_data,245
-train_shape,"torch.Size([4, 3, 64, 64])"
-test_shape,"torch.Size([16, 3, 64, 64])"
-val_shape,"torch.Size([4, 3, 64, 64])"
+train_shape,"torch.Size([4, 1, 64, 64])"
+test_shape,"torch.Size([16, 1, 64, 64])"
+val_shape,"torch.Size([4, 1, 64, 64])"
