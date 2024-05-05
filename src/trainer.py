@@ -179,15 +179,13 @@ class Trainer:
                     "test_accuracy": self.total_model_history["test_accuracy"],
                 }
             ).to_csv(
-                os.path.join(self.config["path"]["files_path"], "model_history.csv",index=True)
+                os.path.join(
+                    self.config["path"]["files_path"], "model_history.csv", index=True
+                )
             )
 
         else:
-            raise Exception("Cannot be saved the model metrics".capitalize()
-            )
-
-        else:
-            raise Exception("Cannot be saved the model images".capitalize())
+            raise Exception("Cannot be saved the model metrics".capitalize())
 
     def saved_train_images(self, **kwargs):
         if os.path.exists(self.config["path"]["train_images"]):
