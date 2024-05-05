@@ -80,24 +80,13 @@ python /path/to/SGAN/src/cli.py --help
 |              | CPU    | `python cli_script.py --test --model_path path/to/model.pth --device cpu`                                                                                           |
 
 
-## Training and Generating Images - Importing the Modules
+## Training and testing
 
-### Using CUDA
-
-To leverage CUDA for accelerated computing, follow the instructions below. This setup is ideal for training and testing models with NVIDIA GPUs, ensuring fast processing and efficient handling of large datasets.
-
-**Prerequisites:**
-
-- Ensure CUDA-compatible hardware is available and properly configured.
-- Verify that the necessary CUDA drivers and libraries are installed on your system.
 
 **Script Execution:**
 
 1. **Data Preparation:**
-
-   - Initialize and configure the data loader for image preprocessing and dataset creation.
-
-   ```python
+```python
    from src.dataloader import Loader
 
    loader = Loader(
@@ -108,13 +97,12 @@ To leverage CUDA for accelerated computing, follow the instructions below. This 
     )
    loader.unzip_images()
    loader.create_dataloader()
-   ```
+```
 
 2. **Model Training:**
 
-   - Set up and initiate the training process using specified parameters.
 
-   ```python
+```python
    from src.trainer import Trainer
 
    trainer = Trainer(
@@ -130,21 +118,20 @@ To leverage CUDA for accelerated computing, follow the instructions below. This 
     lr_scheduler=True,        # Use 'False'
     adam=True                 # Use 'SGD'
    )
-   ```
+```
 
 3. **Model Testing:**
 
-   - Execute model testing to evaluate performance and generate synthetic images.
 
-   ```python
-   from src.test import Test
+```python
+   from src.test import TestModel
 
    test = TestModel(
     model="/checkpoints/best_models/netD_51.pth",
     device="cuda"
     ) # Use 'cuda' or 'mps'
    test.test()  # It will return model accuracy, precision, recall, f1 score along with clf report and confusion metrics
-   ```
+```
 
 
 ## Contributing
