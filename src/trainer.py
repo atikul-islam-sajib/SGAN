@@ -243,7 +243,9 @@ class Trainer:
 
         _, generated_predict = self.netD(self.netG(kwargs["fake_samples"]))
 
-        loss = self.criterion_loss(generated_predict, kwargs["real_ones"])
+        loss = self.criterion_loss(
+            torch.sigmoid(generated_predict), kwargs["real_ones"]
+        )
 
         if self.l1_loss:
             loss += 0.001 * self.l1(model=self.netG)
