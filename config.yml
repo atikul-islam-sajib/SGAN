@@ -6,6 +6,7 @@ path:
   train_models: ./checkpoints/train_models/
   best_model: ./checkpoints/best_model
   train_images: ./outputs/train_images/
+  results_path: ./outputs/test_result/
   
 
 

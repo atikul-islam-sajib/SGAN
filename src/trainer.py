@@ -148,12 +148,7 @@ class Trainer:
             raise Exception("Cannot be saved the model".capitalize())
 
     def saved_metrics(self, **kwargs):
-        print(
-            kwargs["total_netG_loss"],
-            kwargs["total_netG_loss"],
-            kwargs["total_test_accuracy"],
-            kwargs["total_train_accuracy"],
-        )
+
         self.total_model_history["netG_loss"].extend(kwargs["total_netG_loss"])
         self.total_model_history["netD_loss"].extend(kwargs["total_netD_loss"])
         self.total_model_history["train_accuracy"].extend(
@@ -179,9 +174,8 @@ class Trainer:
                     "test_accuracy": self.total_model_history["test_accuracy"],
                 }
             ).to_csv(
-                os.path.join(
-                    self.config["path"]["files_path"], "model_history.csv", index=True
-                )
+                os.path.join(self.config["path"]["files_path"], "model_history.csv"),
+                index=False,
             )
 
         else:
@@ -317,7 +311,6 @@ class Trainer:
                 self.train_accuracy.append(netD["accuracy"])
 
                 netG = self.update_generator_model(
-                    images=images,
                     fake_samples=fake_samples,
                     real_ones=real_ones,
                 )
@@ -361,7 +354,8 @@ class Trainer:
             self.total_test_accuracy.append(np.mean(self.test_accuracy))
 
             try:
-                self.saved_train_images(epoch=epoch + 1)
+                # self.saved_train_images(epoch=epoch + 1)
+                pass
 
             except Exception as e:
                 print("The exception is in saved_train_images {}".format(e))
