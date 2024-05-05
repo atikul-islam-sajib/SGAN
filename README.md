@@ -2,7 +2,7 @@
 
 ## Overview
 
-Semi-Supervised Generative Adversarial Network (SGAN) which achieves better classification performance than the standard supervised algorithms using majority unlabelled datasets.
+an SGAN uses the GAN framework to make use of both labeled and unlabeled data to perform classification tasks. In this setup, the discriminator is not only trying to distinguish between real and generated data but also classifying the real data into their correct categories. This allows the model to leverage a large amount of unlabeled data alongside a smaller set of labeled data, which can be particularly useful when labels are expensive or difficult to obtain.
 
 ## Model architecture
 
@@ -74,7 +74,7 @@ python /path/to/SGAN/src/cli.py --help
 | ------------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Training** | CUDA   | `python cli_script.py --train --image_path path/to/dataset.zip --image_size 64 --batch_size 64 --epochs 200 --latent 100 --in_channels 1 --lr 0.0002 --l1_loss True --is_display True --device cuda` |
 |              | MPS    | `python cli_script.py --train --image_path path/to/dataset.zip --image_size 64 --batch_size 64 --epochs 200 --latent 100 --in_channels 1 --lr 0.0002 --l1_loss True --is_display True --device mps`  |
-|              | CPU    | ``python cli_script.py --train --image_path path/to/dataset.zip --image_size 64 --batch_size 64 --epochs 200 --latent 100 --in_channels 1 --lr 0.0002 --l1_loss True --is_display True --device cpu`  |
+|              | CPU    | `python cli_script.py --train --image_path path/to/dataset.zip --image_size 64 --batch_size 64 --epochs 200 --latent 100 --in_channels 1 --lr 0.0002 --l1_loss True --is_display True --device cpu`  |
 | **Testing**  | CUDA   | `python cli_script.py --test --model_path path/to/model.pth --device cuda`                                                                                          |
 |              | MPS    | `python cli_script.py --test --model_path path/to/model.pth --device mps`                                                                                           |
 |              | CPU    | `python cli_script.py --test --model_path path/to/model.pth --device cpu`                                                                                           |
@@ -100,7 +100,12 @@ To leverage CUDA for accelerated computing, follow the instructions below. This 
    ```python
    from src.dataloader import Loader
 
-   loader = Loader(image_path="/path/to/dataset.zip", batch_size=64, image_size=64, split_size=0.5)
+   loader = Loader(
+    image_path="/path/to/dataset.zip",
+    batch_size=64,
+    image_size=64,
+    split_size=0.5
+    )
    loader.unzip_images()
    loader.create_dataloader()
    ```
@@ -134,7 +139,10 @@ To leverage CUDA for accelerated computing, follow the instructions below. This 
    ```python
    from src.test import Test
 
-   test = TestModel(best_model_path="/checkpoints/best_models/netD_51.pth", device="cuda") # Use 'cuda' or 'mps'
+   test = TestModel(
+    model="/checkpoints/best_models/netD_51.pth",
+    device="cuda"
+    ) # Use 'cuda' or 'mps'
    test.test()  # It will return model accuracy, precision, recall, f1 score along with clf report and confusion metrics
    ```
 
