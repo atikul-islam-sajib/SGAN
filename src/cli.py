@@ -113,11 +113,11 @@ def cli():
                 split_size=args.split_size,
             )
 
-            loader.unzip_folder()
+            # loader.unzip_folder()
             loader.create_dataloader()
 
-            loader.dataset_details()
-            loader.plot_images()
+            # loader.dataset_details()
+            # loader.plot_images()
 
             trainer = Trainer(
                 epochs=args.epochs,
