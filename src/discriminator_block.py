@@ -39,7 +39,7 @@ class DiscriminatorBlock(nn.Module):
 
         layers["batch_norm"] = nn.BatchNorm2d(self.out_channels)
 
-        layers["leaky_relu"] = nn.LeakyReLU(0.2, inplace=True)
+        layers["relu"] = nn.ReLU(inplace=True)
 
         return nn.Sequential(layers)
 

@@ -1,12 +1,18 @@
-# path:
-#   raw_path: ./data/raw/
-#   processed_path: ./data/processed/
-#   files_path: ./research/files/
+path:
+  raw_path: ./data/raw/
+  processed_path: ./data/processed/
+  files_path: ./research/files/
+  metrics_path: ./metrics/
+  train_models: ./checkpoints/train_models/
+  best_model: ./checkpoints/best_model
+  train_images: ./outputs/train_images/
   
 
 
-path:
-  raw_path: ../../data/raw/
-  processed_path: ../../data/processed/
-  files_path: ../../research/files/
-  train_models: ../../checkpoints/train_models/
+# path:
+#   raw_path: ../../data/raw/
+#   processed_path: ../../data/processed/
+#   files_path: ../../research/files/
+#   metrics_path: ../../metrics/
+#   train_models: ../../checkpoints/train_models/
+#   best_model: ../../checkpoints/best_model

@@ -1,10 +1,10 @@
 ,quantity
-total_data(Train),61
-total_data(Test),61
-total_data(Val),123
-total_batch(Train),16
-total_batch(Test),4
+total_data(Train),119
+total_data(Test),52
+total_data(Val),74
+total_batch(Train),119
+total_batch(Test),13
 total_data,245
-train_shape,"torch.Size([4, 1, 64, 64])"
-test_shape,"torch.Size([16, 1, 64, 64])"
-val_shape,"torch.Size([4, 1, 64, 64])"
+train_shape,"torch.Size([1, 1, 64, 64])"
+test_shape,"torch.Size([4, 1, 64, 64])"
+val_shape,"torch.Size([1, 1, 64, 64])"

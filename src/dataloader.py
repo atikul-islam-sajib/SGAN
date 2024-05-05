@@ -277,14 +277,14 @@ if __name__ == "__main__":
         "--batch_size",
         type=int,
         default=4,
-        choices=[4, 8, 16, 32],
+        choices=[1, 4, 8, 16, 32],
         help="Batch size for the dataloader".capitalize(),
     )
     parser.add_argument(
         "--split_size",
         type=float,
         default=0.50,
-        choices=[0.40, 0.50, 0.60],
+        choices=[0.40, 0.50, 0.60, 0.80],
         help="Split of the dataset".capitalize(),
     )
     args = parser.parse_args()
@@ -297,7 +297,7 @@ if __name__ == "__main__":
             split_size=args.split_size,
         )
 
-        loader.unzip_folder()
+        # loader.unzip_folder()
         loader.create_dataloader()
 
         loader.dataset_details()

@@ -30,7 +30,7 @@ class GeneratorBlock(nn.Module):
     def block(self):
         layers = OrderedDict()
 
-        layers["conv"] = nn.ConvTranspose2d(
+        layers["convTranspose"] = nn.ConvTranspose2d(
             in_channels=self.in_channels,
             out_channels=self.out_channels,
             kernel_size=self.kernel,
